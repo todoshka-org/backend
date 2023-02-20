@@ -18,7 +18,9 @@ export class ProjectByIdPipe
 
   async transform(value: string, metadata: ArgumentMetadata) {
     super.transform(value, metadata);
-    const project = await this.projectService.findById(value);
+    const project = await this.projectService
+      .findById(value)
+      .populate('users.user sections');
     if (!project) {
       throw new NotFoundException('Project not found');
     }
