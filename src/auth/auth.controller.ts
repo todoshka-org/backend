@@ -6,9 +6,9 @@ import {
   HttpStatus,
   Post,
   UseGuards,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import { ValidationPipe } from 'src/shared/pipes/validataion.pipe';
 import { AuthService } from './auth.service';
 import { SigninDto } from './dto/signin.dto';
 import { SignupDto } from './dto/signup.dto';

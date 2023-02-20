@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   UseGuards,
+  ValidationPipe,
 } from '@nestjs/common';
 import { UseInterceptors } from '@nestjs/common/decorators';
 import { RefType } from 'mongoose';
@@ -13,11 +14,10 @@ import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { NullInterceptor } from 'src/shared/interceptors/null-interceptor';
 import { ParseObjectIdPipe } from 'src/shared/pipes/objectid.pipe';
-import { ValidationPipe } from 'src/shared/pipes/validataion.pipe';
 import { Role } from '../auth/enums/role.enum';
 import { AccessTokenGuard } from '../auth/guards/acces-token.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import MongooseClassSerializerInterceptor from '../shared/utils/mongoSerializeInterceptor';
+import MongooseClassSerializerInterceptor from '../shared/interceptors/mongoSerializeInterceptor';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserByIdPipe } from './pipes/user-by-id.pipe';
 import { User, UserDocument } from './user.schema';

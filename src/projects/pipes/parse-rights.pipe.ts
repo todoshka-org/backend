@@ -4,7 +4,7 @@ import {
   Injectable,
   PipeTransform,
 } from '@nestjs/common';
-import { Rights } from '../enums/rights.enum';
+import { Rights } from 'src/shared/enums/rights.enum';
 
 @Injectable()
 export class ParseRightsPipe implements PipeTransform<Rights[]> {

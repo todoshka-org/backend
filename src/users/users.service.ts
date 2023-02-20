@@ -14,15 +14,30 @@ export class UsersService {
   }
 
   async findAll(): Promise<UserDocument[]> {
-    return await this.userModel.find();
+    return this.userModel.find().populate({
+      path: 'projects',
+      populate: {
+        path: 'users.user',
+      },
+    });
   }
 
   async findById(id: RefType): Promise<UserDocument> {
-    return await this.userModel.findById(id).populate('projects');
+    return await this.userModel.findById(id).populate({
+      path: 'projects',
+      populate: {
+        path: 'users.user',
+      },
+    });
   }
 
   async findByEmail(email: string): Promise<UserDocument> {
-    return this.userModel.findOne({ email }).populate('projects');
+    return this.userModel.findOne({ email }).populate({
+      path: 'projects',
+      populate: {
+        path: 'users.user',
+      },
+    });
   }
 
   async update(id: RefType, update: UpdateUserDto): Promise<UserDocument> {
